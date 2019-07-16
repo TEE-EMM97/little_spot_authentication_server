@@ -1,0 +1,143 @@
+---
+swagger: "2.0"
+info:
+  description: "An API used to front different methods of obtaining authentication\
+    \ and refresh tokens. \n"
+  version: "1.0.0"
+  title: "authentication_api"
+  contact: {}
+host: "localhost:8000"
+schemes:
+- "http"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+paths:
+  /spotify/exchange:
+    post:
+      tags:
+      - "Spotify"
+      summary: "post exchange code"
+      operationId: "exchangeCode"
+      consumes: []
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/body"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            type: "object"
+            required:
+            - "access_token"
+            - "expires_in"
+            - "refresh_token"
+            properties:
+              access_token:
+                type: "string"
+              expires_in:
+                type: "string"
+              refresh_token:
+                type: "string"
+        400:
+          description: "Status 400"
+          schema:
+            type: "object"
+            required:
+            - "error"
+            properties:
+              error:
+                type: "string"
+      x-swagger-router-controller: "Spotify"
+  /spotify/refresh:
+    post:
+      tags:
+      - "Spotify"
+      summary: "post refresh token"
+      operationId: "spotifyRefreshPOST"
+      consumes: []
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/body_1"
+      responses:
+        200:
+          description: "Status 200"
+          schema:
+            type: "object"
+            required:
+            - "access_token"
+            - "expires_in"
+            properties:
+              access_token:
+                type: "string"
+              expires_in:
+                type: "string"
+        400:
+          description: "Status 400"
+          schema:
+            type: "object"
+            required:
+            - "error"
+            properties:
+              error:
+                type: "string"
+      x-swagger-router-controller: "Spotify"
+definitions:
+  body_1:
+    type: "object"
+    required:
+    - "refresh_token"
+    properties:
+      refresh_token:
+        type: "string"
+        description: "the refresh token to be exchanged"
+  inline_response_200_1:
+    required:
+    - "access_token"
+    - "expires_in"
+    properties:
+      access_token:
+        type: "string"
+      expires_in:
+        type: "string"
+    example:
+      access_token: "access_token"
+      expires_in: "expires_in"
+  inline_response_200:
+    required:
+    - "access_token"
+    - "expires_in"
+    - "refresh_token"
+    properties:
+      access_token:
+        type: "string"
+      expires_in:
+        type: "string"
+      refresh_token:
+        type: "string"
+    example:
+      access_token: "access_token"
+      refresh_token: "refresh_token"
+      expires_in: "expires_in"
+  body:
+    type: "object"
+    required:
+    - "code"
+    properties:
+      code:
+        type: "string"
+        description: "the code to be converted to an authentication token and refresh\
+          \ token"
+  inline_response_400:
+    required:
+    - "error"
+    properties:
+      error:
+        type: "string"
