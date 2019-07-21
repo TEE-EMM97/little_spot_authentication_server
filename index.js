@@ -2,12 +2,12 @@
 
 var fs = require('fs'),
   path = require('path'),
-  http = require('http');
-var cors = require('cors');
-
-var app = require('connect')();
-var swaggerTools = require('swagger-tools');
-var jsyaml = require('js-yaml');
+  http = require('http'),
+  cors = require('cors'),
+  spotifyService = require('./service/SpotifyService'),
+  app = require('connect')(),
+  swaggerTools = require('swagger-tools'),
+  jsyaml = require('js-yaml');
 
 
 // Cross Origin Requests - must have this, as we are an API.
@@ -25,6 +25,43 @@ var options = {
 // The Swagger document (require it, build it programmatically, fetch it from a URL, ...)
 var spec = fs.readFileSync(path.join(__dirname,'api/swagger.yaml'), 'utf8');
 var swaggerDoc = jsyaml.safeLoad(spec);
+
+
+var getSpotifyConfig = function(){
+
+  var result = {};
+
+  if(!process.env.SPOTIFY_CLIENT_CALLBACK_URL){
+    throw new Error("SPOTIFY_CLIENT_CALLBACK_URL undefined!");
+  }
+  if(!process.env.SPOTIFY_ENCRYPTION_SECRET){
+    throw new Error("SPOTIFY_ENCRYPTION_SECRET undefined!");
+  }
+  if(!process.env.SPOTIFY_CLIENT_SECRET){
+    throw new Error("SPOTIFY_CLIENT_SECRET undefined!");
+  }
+  if(!process.env.SPOTIFY_CLIENT_ID){
+    throw new Error("SPOTIFY_CLIENT_ID undefined!");
+  }
+  if(!process.env.SPOTIFY_API_DOMAIN){
+    throw new Error("SPOTIFY_API_DOMAIN undefined!");
+  }
+  if(!process.env.SPOTIFY_API_PATH){
+    throw new Error("SPOTIFY_API_PATH undefined!");
+  }
+
+  result.clientId = process.env.SPOTIFY_CLIENT_ID;
+  result.clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
+  result.clientCallbackUrl = process.env.SPOTIFY_CLIENT_CALLBACK_URL;
+  result.encryptionSecret = process.env.SPOTIFY_ENCRYPTION_SECRET;
+  result.apiDomain = process.env.SPOTIFY_API_DOMAIN;
+  result.apiPath = process.env.SPOTIFY_API_PATH;
+
+  
+  return result;
+
+}
+
 
 var getSwaggerUIConfig = function(){
   var result = {};
@@ -82,9 +119,14 @@ var writeSwaggerUIConfig = function(swaggerDoc, env){
   return swaggerDoc;
 }
 
+
+var spotifyConfig = getSpotifyConfig(); 
+
 var swaggerUIConfig = getSwaggerUIConfig();
 swaggerDoc = writeSwaggerUIConfig(swaggerDoc, swaggerUIConfig);
 var serverPort = swaggerUIConfig.existingPort || swaggerUIConfig.port;
+
+spotifyService.initialise(spotifyConfig); // throws
 
 
 // Initialize the Swagger middleware
@@ -104,12 +146,13 @@ swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
     { swaggerUiDir: path.join(__dirname, './swagger_spwa') }
   ));
 
+
+
   // Start the server
   http.createServer(app).listen(serverPort, function () {
     console.log('Your server available at: %s://%s', swaggerDoc.schemes[0], swaggerDoc.host);
     console.log('The internal port assigned to your server  is: %d', serverPort );
     console.log('Your swaggerUI is available at: %s://%s/docs' , swaggerDoc.schemes[0], swaggerDoc.host);
-  
   });
 
 });

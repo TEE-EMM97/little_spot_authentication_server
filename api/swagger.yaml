@@ -20,7 +20,7 @@ paths:
       - "Spotify"
       summary: "post exchange code"
       operationId: "exchangeCode"
-      consumes: []
+      consumes: [application/x-www-form-urlencoded]
       parameters:
       - in: "body"
         name: "body"
@@ -59,7 +59,7 @@ paths:
       - "Spotify"
       summary: "post refresh token"
       operationId: "spotifyRefreshPOST"
-      consumes: []
+      consumes: [application/x-www-form-urlencoded]
       parameters:
       - in: "body"
         name: "body"
