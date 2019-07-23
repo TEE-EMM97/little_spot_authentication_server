@@ -3,8 +3,8 @@ a wrapper service which holds app-ids on behalf of an insecure client
 
 Please see the following items for inspiration:
 
-[cordova plugin](https://github.com/Festify/cordova-spotify-oauth)
-[tutorial](https://devdactic.com/ionic-spotify-app-oauth/)
+* [cordova plugin](https://github.com/Festify/cordova-spotify-oauth)
+* [tutorial](https://devdactic.com/ionic-spotify-app-oauth/)
 
 
 Current deployment is at:
