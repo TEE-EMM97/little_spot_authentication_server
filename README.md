@@ -29,7 +29,7 @@ The server must define the following environment variables:
 |API_SCHEME|https|
 |SPOTIFY_API_DOMAIN|accounts.spotify.com|
 |SPOTIFY_API_PATH|/api/token| 
-|SPOTIFY_CLIENT_CALLBACK_URL|http://gaddummoodmusic.com/callback/| 
+|SPOTIFY_CLIENT_CALLBACK_URL|gaddumspotify://callback| 
 |SPOTIFY_CLIENT_ID| obtained from dev account|
 |SPOTIFY_CLIENT_SECRET|obtained from dev account |
 |SPOTIFY_ENCRYPTION_SECRET|known to server and client|
