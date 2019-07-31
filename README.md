@@ -3,8 +3,8 @@ a wrapper service which holds app-ids on behalf of an insecure client
 
 Please see the following items for inspiration:
 
-[cordova plugin](https://github.com/Festify/cordova-spotify-oauth)
-[tutorial](https://devdactic.com/ionic-spotify-app-oauth/)
+* [cordova plugin](https://github.com/Festify/cordova-spotify-oauth)
+* [tutorial](https://devdactic.com/ionic-spotify-app-oauth/)
 
 
 Current deployment is at:
@@ -29,7 +29,7 @@ The server must define the following environment variables:
 |API_SCHEME|https|
 |SPOTIFY_API_DOMAIN|accounts.spotify.com|
 |SPOTIFY_API_PATH|/api/token| 
-|SPOTIFY_CLIENT_CALLBACK_URL|http://gaddummoodmusic.com/callback/| 
+|SPOTIFY_CLIENT_CALLBACK_URL|gaddumspotify://callback| 
 |SPOTIFY_CLIENT_ID| obtained from dev account|
 |SPOTIFY_CLIENT_SECRET|obtained from dev account |
 |SPOTIFY_ENCRYPTION_SECRET|known to server and client|
