@@ -88,18 +88,24 @@ exports.exchangeCode = function (body) {
  **/
 exports.spotifyRefreshPOST = function (body) {
 
-  spotifyRequest({
-    grant_type: "refresh_token",
-    refresh_token: crypto.decrypt(body.refresh_token, ENCRYPTION_SECRET)
-  }).then(
-    function (response) {
-      var session = JSON.parse(response);
-      var result = {
-        "access_token": session.access_token,
-        "expires_in": session.expires_in
-      };
-      resolve(result);
-    });
+  return new Promise(function (resolve, reject) {
+
+    spotifyRequest({
+      grant_type: "refresh_token",
+      refresh_token: crypto.decrypt(body.refresh_token, ENCRYPTION_SECRET)
+    })
+      .then(
+        function (response) {
+          var session = JSON.parse(response);
+          var result = {
+            "access_token": session.access_token,
+            "expires_in": session.expires_in
+          };
+          resolve(result);
+        }
+      );
+  }
+  );
 }
 
 
