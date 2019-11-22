@@ -1,4 +1,4 @@
-# gaddum_authentication
+# little_spot_authentication_server
 a wrapper service which holds app-ids on behalf of an insecure client
 
 Please see the following items for inspiration:
