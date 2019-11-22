@@ -3,6 +3,8 @@ a wrapper service which holds app-ids on behalf of an insecure client
 
 Please see the following items for inspiration:
 
+* [example app](https://github.com/aliceliveprojects/little_spot_app)
+* [Spotify Developer Dashboard (requires account)](https://developer.spotify.com/dashboard/login)
 * [cordova plugin](https://github.com/Festify/cordova-spotify-oauth)
 * [tutorial](https://devdactic.com/ionic-spotify-app-oauth/)
 
