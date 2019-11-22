@@ -8,7 +8,7 @@ Please see the following items for inspiration:
 * [cordova plugin](https://github.com/Festify/cordova-spotify-oauth)
 * [tutorial](https://devdactic.com/ionic-spotify-app-oauth/)
 
-When deployed, envirnment variables are set on the host, to tie the server to a Spotify developer account, via a client ID and server secret. You must use your own deployment, for your own client app.
+When deployed, environment variables (see below) are set on the host. These will tie the server to a specific, Spotify developer account, via a client ID and server secret. This means you must use your own server deployment, for your own client app.
 
 Current deployment is at:
 https://gaddumauth.herokuapp.com/
