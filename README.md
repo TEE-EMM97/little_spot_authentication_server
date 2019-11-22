@@ -16,8 +16,8 @@ https://gaddumauth.herokuapp.com/docs/
 
 This application can be deployed from localhost for debugging. Make sure the client mobile app is on the same wireless local network. The urls used look like this, for example:
 
-http://192.168.1.5:8000/spotify/exchange
-http://192.168.1.5:8000/spotify/refresh
+**EXCHANGE URL**: http://192.168.1.5:8000/spotify/exchange   
+**REFRESH URL**: http://192.168.1.5:8000/spotify/refresh
 
 
 The server must define the following environment variables:
