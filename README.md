@@ -10,12 +10,6 @@ Please see the following items for inspiration:
 
 When deployed, environment variables (see below) are set on the host. These will tie the server to a specific, Spotify developer account, via a client ID and server secret. This means you must use your own server deployment, for your own client app.
 
-Current deployment is at:
-https://gaddumauth.herokuapp.com/
-
-Swagger UI is at:
-https://gaddumauth.herokuapp.com/docs/
-
 This application can be deployed from localhost for debugging. Make sure the client mobile app is on the same wireless local network. The urls used look like this, for example:
 
 **EXCHANGE URL**: http://192.168.1.5:8000/spotify/exchange   
@@ -27,7 +21,7 @@ The server must define the following environment variables:
 
 |var|example|
 |-|-|
-|API_DOMAIN|gaddumauth.herokuapp.com| 
+|API_DOMAIN|obtained from your server| 
 |API_PORT|443|
 |API_SCHEME|https|
 |SPOTIFY_API_DOMAIN|accounts.spotify.com|
@@ -37,3 +31,6 @@ The server must define the following environment variables:
 |SPOTIFY_CLIENT_SECRET|obtained from dev account |
 |SPOTIFY_ENCRYPTION_SECRET|known to server and client|
  
+Note: Authorised staff can find test credentials [here](https://github.com/CMDT/DigitalLabs_TeachingProjects/tree/master/docs/accounts/alice/spotify)
+
+
