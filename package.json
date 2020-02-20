@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "prestart": "npm install",
-    "start": "node index.js",
-    "postinstall": "ng build"
+    "start": "node index.js"
   },
   "keywords": [
     "swagger"
@@ -14,15 +13,16 @@
   "license": "Unlicense",
   "private": true,
   "dependencies": {
-    "body-parser": "^1.19.0",
-    "connect": "^3.2.0",
-    "cors": "^2.8.5",
-    "crypto-js": "^4.0.0",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
+    "body-parser": "1.19.0",
+    "connect": "3.2.0",
+    "cors": "2.8.5",
+    "crypto-js": "4.0.0",
+    "dotenv": "8.2.0",
+    "express": "4.17.1",
     "http": "0.0.0",
-    "js-yaml": "^3.3.0",
-    "request": "^2.88.2",
+    "js-yaml": "3.3.0",
+    "natives": "^1.1.6",
+    "request": "2.88.2",
     "swagger-tools": "0.10.1"
   },
   "devDependencies": {},
